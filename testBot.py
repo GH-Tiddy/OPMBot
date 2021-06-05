@@ -14,12 +14,14 @@ reddit = praw.Reddit(client_id = "BFZS1bURQThrYQ",
 subreddit = reddit.subreddit("OnePunchMan")
 
 url = ""
-for submission in subreddit.new(limit = 500):
+for submission in subreddit.new(limit = 1000):
     t = (time.time() - submission.created_utc) / 3600
-    if t > 13:
+    print(submission.link_flair_text, ": ", t)
+    if t > 24:
         break
     if (submission.link_flair_text == "Murata Chapter" or submission.link_flair_text == "ONE Chapter" or submission.link_flair_text == "analysis"):
         url = submission.url
+        print(url)
         break
 
 if url != "":
