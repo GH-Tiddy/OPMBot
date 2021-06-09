@@ -19,7 +19,7 @@ for submission in subreddit.new(limit = 1000):
     print(submission.link_flair_text, ": ", t)
     if t > 1:
         break
-    if (submission.link_flair_text == "Murata Chapter" or submission.link_flair_text == "ONE Chapter" or submission.link_flair_text == "analysis"):
+    if (submission.link_flair_text.lower() == "murata chapter" or submission.link_flair_text.lower() == "one chapter" or submission.link_flair_text.lower() == "analysis"):
         url = submission.url
         print(url)
         break
