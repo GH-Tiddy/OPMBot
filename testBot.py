@@ -29,7 +29,7 @@ if url != "":
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
     sender_email = "ghdev846@gmail.com"
-    receiver_email = "ghdev846@gmail.com"
+    receiver_email = "GTiddman@googlemail.com"
     password = "pw4python846846"
 
     message = MIMEMultipart("alternative")
