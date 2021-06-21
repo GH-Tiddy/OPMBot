@@ -5,7 +5,9 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-reddit = praw.Reddit(client_id = environ["CLIENT_ID"],
+CLIENT_ID = environ["CLIENT_ID"]
+
+reddit = praw.Reddit(client_id = CLIENT_ID,
                      client_secret = environ["CLIENT_SECRET"],
                      user_agent = environ["USER_AGENT"])
 
