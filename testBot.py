@@ -4,12 +4,11 @@ import time
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+from boto.s3.connection import S3Connection
 
-CLIENT_ID = environ["CLIENT_ID"]
-
-reddit = praw.Reddit(client_id = CLIENT_ID,
-                     client_secret = environ["CLIENT_SECRET"],
-                     user_agent = environ["USER_AGENT"])
+reddit = praw.Reddit(client_id = os.environ["CLIENT_ID"],
+                     client_secret = os.environ["CLIENT_SECRET"],
+                     user_agent = os.environ["USER_AGENT"])
 
 subreddit = reddit.subreddit("OnePunchMan")
 
@@ -29,9 +28,9 @@ if url != "":
 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = environ["SENDER_EMAIL"]
-    receiver_email = environ["RECEIVER_EMAIL"]
-    password = environ["EMAIL_PASSWORD"]
+    sender_email = os.environ["SENDER_EMAIL"]
+    receiver_email = os.environ["RECEIVER_EMAIL"]
+    password = os.environ["EMAIL_PASSWORD"]
 
     message = MIMEMultipart("alternative")
     message["Subject"] = "New OPM Chapter"
