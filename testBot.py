@@ -5,11 +5,9 @@ import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 
-reddit = praw.Reddit(client_id = "BFZS1bURQThrYQ",
-                     client_secret = "zdFhCKDG__ZLTWHee7mMhLhen00",
-                     username = "GH-Tiddy",
-                     password = "Whatuwant2do",
-                     user_agent = "GH-Tiddy")
+reddit = praw.Reddit(client_id = environ["CLIENT_ID"],
+                     client_secret = environ["CLIENT_SECRET"],
+                     user_agent = environ["USER_AGENT"])
 
 subreddit = reddit.subreddit("OnePunchMan")
 
@@ -29,9 +27,9 @@ if url != "":
 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
-    sender_email = "ghdev846@gmail.com"
-    receiver_email = "GTiddman@googlemail.com"
-    password = "pw4python846846"
+    sender_email = environ["SENDER_EMAIL"]
+    receiver_email = environ["RECEIVER_EMAIL"]
+    password = environ["EMAIL_PASSWORD"]
 
     message = MIMEMultipart("alternative")
     message["Subject"] = "New OPM Chapter"
