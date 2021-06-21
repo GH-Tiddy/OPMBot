@@ -7,7 +7,7 @@ from email.mime.multipart import MIMEMultipart
 
 reddit = praw.Reddit(client_id = os.environ.get("CLIENT_ID"),
                      client_secret = os.environ.get("CLIENT_SECRET"),
-                     user_agent = os.environ.get"USER_AGENT"))
+                     user_agent = os.environ.get("USER_AGENT"))
 
 subreddit = reddit.subreddit("OnePunchMan")
 
