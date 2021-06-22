@@ -4,6 +4,8 @@ import time
 import smtplib, ssl
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
+import os
+from os import environ
 
 reddit = praw.Reddit(client_id = os.environ.get("CLIENT_ID"),
                      client_secret = os.environ.get("CLIENT_SECRET"),
