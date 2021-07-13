@@ -1,5 +1,6 @@
 import praw
 import re
+import requests
 import time
 import smtplib, ssl
 from email.mime.text import MIMEText
@@ -17,15 +18,24 @@ url = ""
 for submission in subreddit.new(limit = 1000):
     t = (time.time() - submission.created_utc) / 3600
     print(submission.link_flair_text, ": ", t)
-    if t > 5:
+    if t > 96:
         break
     if (submission.link_flair_text.lower() == "murata chapter" or submission.link_flair_text.lower() == "one chapter"):
-        if t < 1:
+        if t < 96:
           url = submission.url
           print(url)
           break
 
 if url != "":
+  
+  req = requests.get(url, 'html.parser')
+  source_text = req.text
+  p = re.compile("og:image\" content=\"([a-zA-Z0-9_:/. ]+)\"")
+  m = p.search(source_text)
+  image = "https://i.imgur.com/RgzkuXo.png";
+  if m:
+      image = m.group(1)
+
 
     port = 465  # For SSL
     smtp_server = "smtp.gmail.com"
@@ -47,7 +57,7 @@ if url != "":
         <p><b>Hi,</b><br>
            A new OPM chapter has been released<br>
            <a href=""" + url + """>""" + url + """</a><br>
-            <img src="https://i.imgur.com/RgzkuXo.png" alt = "image not found" width = "256" height = "354.155">
+            <img src=""" + image + """ alt = "image not found" width = "256" height = "354.155">
         </p>
       </body>
     </html>
