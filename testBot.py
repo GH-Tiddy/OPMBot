@@ -28,13 +28,13 @@ for submission in subreddit.new(limit = 1000):
 
 if url != "":
   
-  req = requests.get(url, 'html.parser')
-  source_text = req.text
-  p = re.compile("og:image\" content=\"([a-zA-Z0-9_:/. ]+)\"")
-  m = p.search(source_text)
-  image = "https://i.imgur.com/RgzkuXo.png";
-  if m:
-      image = m.group(1)
+    req = requests.get(url, 'html.parser')
+    source_text = req.text
+    p = re.compile("og:image\" content=\"([a-zA-Z0-9_:/. ]+)\"")
+    m = p.search(source_text)
+    image = "https://i.imgur.com/RgzkuXo.png";
+    if m:
+        image = m.group(1)
 
 
     port = 465  # For SSL
